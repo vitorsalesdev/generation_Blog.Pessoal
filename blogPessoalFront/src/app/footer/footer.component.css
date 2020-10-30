@@ -13,13 +13,13 @@ ul.social-network li {
   padding: 5px;
 }
 
-.faFacebook,
+.faGithub,
 .faLinkedin,
 .faInstagram {
   color: white;
 }
 
-.faFacebook:hover {
+.faGithub:hover {
   color: #3b5998;
 }
 

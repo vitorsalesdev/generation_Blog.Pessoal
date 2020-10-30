@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{ faFacebook } from  "@fortawesome/free-brands-svg-icons"
+import{ faGithubSquare } from  "@fortawesome/free-brands-svg-icons"
 import{ faInstagram } from  "@fortawesome/free-brands-svg-icons"
 import{ faLinkedin } from  "@fortawesome/free-brands-svg-icons"
 
@@ -10,7 +10,7 @@ import{ faLinkedin } from  "@fortawesome/free-brands-svg-icons"
 })
 export class FooterComponent implements OnInit {
 
-  faFacebook = faFacebook
+  faGithub = faGithubSquare
   faInstagram = faInstagram
   faLinkedin = faLinkedin
   constructor() { }
