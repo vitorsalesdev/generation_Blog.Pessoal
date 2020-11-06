@@ -8,13 +8,12 @@
     <div class="col-md-6">
       <div>
         <div class="form-group">
-          <label for="usuario">Nome de usuário</label>
+          <label for="exampleInputEmail1">Endereço de email</label>
           <input
-            type="text"
+            type="email"
             class="form-control"
-            id="usuario"
-            placeholder="Seu nome de usuário cadastrado"
-          />
+            id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Seu email cadastrado" [(ngModel)] = 'userLogin.usuario'>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Senha</label>
@@ -22,11 +21,11 @@
             type="password"
             class="form-control"
             id="exampleInputPassword1"
-            placeholder="Senha"
-          />
+            placeholder="Senha" [(ngModel)] = 'userLogin.senha'
+          >
         </div>
         <div class="d-flex justify-content-center">
-          <button type="submit" class="btn btn-outline-success w-25">
+          <button type="submit" class="btn btn-outline-success w-25"(click)='entrar()'>
             Entrar
           </button>
         </div>
