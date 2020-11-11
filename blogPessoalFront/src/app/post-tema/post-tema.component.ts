@@ -19,7 +19,7 @@ export class PostTemaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.findAllTemas
+    this.findAllTemas()
   }
   findAllTemas(){
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
