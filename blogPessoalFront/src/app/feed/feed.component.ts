@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertasService } from '../alertas.service';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { PostagemService } from '../service/postagem.service';
@@ -13,7 +14,7 @@ export class FeedComponent implements OnInit {
 
 key: 'data'
 reverse = true
-
+titulo: string
 postagem: Postagem = new Postagem()
 listaPostagens: Postagem[]
 
@@ -23,7 +24,8 @@ idTema: number
 
   constructor(
     private postagemService: PostagemService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private alert: AlertasService
   ) { }
 
   ngOnInit() {
@@ -43,12 +45,12 @@ idTema: number
     this.postagem.tema = this.tema
 
     if(this.postagem.titulo == null || this.postagem.texto == null || this.postagem.tema == null){
-      alert('Preencha todos os campos corretamente antes de publicar!')
+      this.alert.showAlertDanger('Preencha todos os campos corretamente antes de publicar!')
     } else{
       this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
         this.postagem = resp
         this.postagem = new Postagem()
-        alert('Postagem realizada com sucesso!')
+        this.alert.showAlertSuccess('Postagem realizada com sucesso!')
         this.findAllPostagens()
       })
     }
@@ -64,4 +66,14 @@ idTema: number
       this.tema = resp
     })
   }
+  findByTituloPostagem(){
+    if(this.titulo == ''){
+      this.findAllPostagens()
+    } else {
+      this.postagemService.getByTituloPostagem(this.titulo).subscribe((resp:Postagem[]) => {
+        this.listaPostagens= resp
+      })
+    }
+  }
+  
 }

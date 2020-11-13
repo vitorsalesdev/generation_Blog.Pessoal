@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertasService } from '../alertas.service';
 import { Tema } from '../model/Tema';
 import { TemaService } from '../service/tema.service';
 
@@ -15,7 +16,8 @@ export class DeleteTemaComponent implements OnInit {
   constructor(
     private temaService: TemaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alert: AlertasService
   ) { }
 
   ngOnInit(){
@@ -32,7 +34,7 @@ export class DeleteTemaComponent implements OnInit {
   btnSim(){
     this.temaService.deleteTema(this.tema.id).subscribe(() =>{
       this.router.navigate(['/cadastrar-tema'])
-      alert('Tema apagado com sucesso!')
+      this.alert.showAlertSuccess('Tema apagado com sucesso!')
     })
   }
 
